@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>4D AI Fluency Audit | Creatives Connect</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="Discover your vulnerability to the gig economy polarization. Take the 4D AI Fluency Audit by Creative Minds' Forum to find your strategic career positioning.">
+    <meta property="og:title" content="4D AI Fluency Audit | Creatives Connect">
+    <meta property="og:description" content="Are you a Commodity Laborer or a Systems Architect? Take the 20-question audit to find out.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="assets/cmf_logo.png">
+    <link rel="apple-touch-icon" href="assets/cmf_logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    
+
     <script>
         tailwind.config = {
             theme: {
@@ -17,6 +22,7 @@
                     fontFamily: {
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
                         display: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"DM Serif Display"', 'serif'],
                     },
                     colors: {
                         brand: {
@@ -31,140 +37,815 @@
         }
     </script>
     <style>
-        body { background-color: #f1f5f9; }
-        .radio-custom:checked + label {
-            background-color: #ea580c;
-            color: white;
-            border-color: #ea580c;
+        /* ===== Base ===== */
+        body { 
+            background-color: #f8faff; 
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        /* Hide scrollbar for a cleaner look but allow scrolling */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #f1f5f9; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* ===== LANDING PAGE (Combination of Image 1 & Image 2) ===== */
+
+        .landing-bg {
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            background-color: #fbfcfe;
+            background-image: radial-gradient(rgba(15, 23, 42, 0.08) 1.25px, transparent 1.25px);
+            background-size: 28px 28px;
+        }
+        .landing-bg::before {
+            content: '';
+            position: absolute;
+            top: -160px;
+            right: -160px;
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, rgba(234, 88, 12, 0.08) 0%, rgba(245, 158, 11, 0.03) 45%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .landing-bg::after {
+            content: '';
+            position: absolute;
+            bottom: -200px;
+            left: -200px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(55, 48, 163, 0.07) 0%, rgba(59, 130, 246, 0.03) 45%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Decorative vertical lines (JCD clean guide rules) */
+        .deco-line {
+            position: absolute;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, rgba(15, 23, 42, 0.07), transparent);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Constellation radiating SVG lines */
+        .constellation-svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Hero Typography (Direct from Image 2: JCD tight modern bold sans) */
+        .hero-title {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 800;
+            line-height: 1.04;
+            letter-spacing: -0.04em;
+            color: #0f172a;
+        }
+
+        /* Expanded "O" Capsule Toggle Element (Iconic feature from Image 2) */
+        .expanded-capsule {
+            display: inline-flex;
+            align-items: center;
+            width: 78px;
+            height: 44px;
+            background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 50%, #ea580c 100%);
+            border-radius: 9999px;
+            position: relative;
+            vertical-align: middle;
+            margin: 0 4px;
+            box-shadow: 0 8px 24px rgba(79, 70, 229, 0.28), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+            padding: 4px;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .expanded-capsule:hover {
+            transform: scale(1.06);
+        }
+        @media (min-width: 640px) {
+            .expanded-capsule { width: 105px; height: 58px; padding: 5px; margin: 0 6px; }
+        }
+        @media (min-width: 768px) {
+            .expanded-capsule { width: 130px; height: 70px; padding: 6px; margin: 0 8px; }
+        }
+        .expanded-capsule-knob {
+            width: 36px;
+            height: 36px;
+            background: #ffffff;
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1);
+            animation: toggleSlide 3.4s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .expanded-capsule-knob::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ea580c;
+            opacity: 0.8;
+        }
+        @media (min-width: 640px) {
+            .expanded-capsule-knob { width: 48px; height: 48px; }
+            .expanded-capsule-knob::after { width: 10px; height: 10px; }
+        }
+        @media (min-width: 768px) {
+            .expanded-capsule-knob { width: 58px; height: 58px; }
+            .expanded-capsule-knob::after { width: 12px; height: 12px; }
+        }
+
+        @keyframes toggleSlide {
+            0% { left: 4px; }
+            100% { left: calc(100% - 40px); }
+        }
+        @media (min-width: 640px) {
+            @keyframes toggleSlide {
+                0% { left: 5px; }
+                100% { left: calc(100% - 53px); }
+            }
+        }
+        @media (min-width: 768px) {
+            @keyframes toggleSlide {
+                0% { left: 6px; }
+                100% { left: calc(100% - 64px); }
+            }
+        }
+
+        /* Floating Cards around Hero (From Image 1: quso.ai constellation cards) */
+        .floating-hero-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
+            border-radius: 1rem;
+            padding: 0.85rem 1.15rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            pointer-events: auto;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 10;
+        }
+        .floating-hero-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(234, 88, 12, 0.2);
+        }
+        @keyframes floatGentle1 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(-0.5deg); }
+        }
+        @keyframes floatGentle2 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(8px) rotate(0.5deg); }
+        }
+        .float-anim-1 { animation: floatGentle1 6s ease-in-out infinite; }
+        .float-anim-2 { animation: floatGentle2 7s ease-in-out infinite; }
+
+        /* CTA Button */
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #ea580c, #f59e0b);
+            color: white;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 16px 36px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 24px rgba(234, 88, 12, 0.3);
+        }
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(234, 88, 12, 0.4);
+        }
+        .cta-btn:active {
+            transform: translateY(0);
+        }
+        .cta-arrow {
+            transition: transform 0.3s ease;
+        }
+        .cta-btn:hover .cta-arrow {
+            transform: translateX(4px);
+        }
+
+        /* 4D Framework Cards (The 4 Pillars: Relevance, Need, Application, Benefits) */
+        .framework-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            border-radius: 1.5rem;
+            padding: 2rem 1.75rem;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 6px 24px rgba(15, 23, 42, 0.04);
+        }
+        .framework-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            border-radius: 1.5rem 1.5rem 0 0;
+            transition: height 0.3s ease;
+        }
+        .framework-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 48px rgba(15, 23, 42, 0.1), 0 0 0 1px rgba(234, 88, 12, 0.15);
+        }
+        .framework-card:hover::before {
+            height: 6px;
+        }
+        .card-relevance::before { background: linear-gradient(90deg, #ea580c, #f59e0b); }
+        .card-need::before { background: linear-gradient(90deg, #e11d48, #f43f5e); }
+        .card-application::before { background: linear-gradient(90deg, #2563eb, #38bdf8); }
+        .card-benefits::before { background: linear-gradient(90deg, #059669, #10b981); }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Landing page fade transition */
+        .page-transition {
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .page-fade-out {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        .page-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .page-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scroll reveal for landing */
+        .landing-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .landing-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== QUIZ PAGE (kept from previous) ===== */
+
+        .animated-header {
+            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #0f172a, #172554);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.2; }
+            25% { transform: translateY(-20px) translateX(10px); opacity: 0.5; }
+            50% { transform: translateY(-10px) translateX(-5px); opacity: 0.3; }
+            75% { transform: translateY(-25px) translateX(15px); opacity: 0.4; }
+        }
+        .header-particle { position: absolute; border-radius: 50%; pointer-events: none; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        @keyframes selectPulse {
+            0% { box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.4); }
+            70% { box-shadow: 0 0 0 8px rgba(234, 88, 12, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(234, 88, 12, 0); }
+        }
+        input.radio-custom:checked + label { animation: selectPulse 0.5s ease-out; }
+
+        .progress-bar-track { width: 100%; height: 4px; background: rgba(203,213,225,0.4); border-radius: 999px; overflow: hidden; }
+        .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #ea580c, #f59e0b); border-radius: 999px; transition: width 0.4s cubic-bezier(0.4,0,0.2,1); width: 0%; }
+        @keyframes progressPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
+        .progress-bar-fill.complete { animation: progressPulse 1.5s ease-in-out infinite; }
+
+        @keyframes confettiFall { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
+        @keyframes scoreReveal { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
+        .score-reveal { animation: scoreReveal 0.8s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+
+        .dimension-delegation { border-left: 4px solid #ea580c; }
+        .dimension-description { border-left: 4px solid #3b82f6; }
+        .dimension-discernment { border-left: 4px solid #10b981; }
+        .dimension-diligence { border-left: 4px solid #8b5cf6; }
+        .badge-delegation { background: #ea580c; }
+        .badge-description { background: #3b82f6; }
+        .badge-discernment { background: #10b981; }
+        .badge-diligence { background: #8b5cf6; }
+
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #ea580c, #3730a3); border-radius: 10px; }
+
+        .page-loader { position: fixed; inset: 0; background: #0f172a; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.6s ease, visibility 0.6s ease; }
+        .page-loader.fade-out { opacity: 0; visibility: hidden; }
+        @keyframes shimmerPulse { 0%, 100% { opacity: 0.4; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1); } }
+        .loader-brand { font-family: 'DM Serif Display', serif; font-size: 3rem; font-weight: 400; color: #ea580c; animation: shimmerPulse 1.2s ease-in-out infinite; }
+        .loader-sub { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.875rem; color: rgba(255,255,255,0.4); margin-top: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; }
+
+        .sticky-bar { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.3); }
+
+        /* Stepper */
+        .stepper-track { display: flex; align-items: flex-start; justify-content: center; max-width: 520px; margin: 0 auto; }
+        .step { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; flex-shrink: 0; transition: opacity 0.3s ease; min-width: 60px; }
+        .step.future { cursor: default; opacity: 0.5; }
+        .step-dot { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.95rem; color: white; background: #cbd5e1; transition: all 0.4s cubic-bezier(0.4,0,0.2,1); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .step.active .step-dot { transform: scale(1.15); box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+        .step-label { font-size: 0.65rem; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.3s ease; white-space: nowrap; }
+        .step.active .step-label { color: #0f172a; font-weight: 700; }
+        .step.completed .step-label { color: #64748b; }
+        .step-connector { flex: 1; height: 3px; background: #e2e8f0; border-radius: 999px; margin: 20px 6px 0; overflow: hidden; min-width: 24px; }
+        .step-connector-fill { height: 100%; width: 0%; border-radius: 999px; transition: width 0.6s cubic-bezier(0.4,0,0.2,1); }
+
+        /* Slides */
+        .slides-viewport { overflow: hidden; border-radius: 1rem; }
+        .slides-container { display: flex; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); align-items: stretch; }
+        .slide { min-width: 100%; flex-shrink: 0; }
+
+        @keyframes sectionComplete { 0% { box-shadow: 0 4px 30px rgba(0,0,0,0.06); } 50% { box-shadow: 0 0 30px rgba(234,88,12,0.2); } 100% { box-shadow: 0 4px 30px rgba(0,0,0,0.06); } }
+        .section-complete { animation: sectionComplete 0.6s ease; }
+
+        .nav-btn { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 0.9rem; padding: 8px 16px; border-radius: 10px; transition: all 0.3s ease; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+        .nav-btn-back { color: #475569; background: transparent; }
+        .nav-btn-back:not(:disabled):hover { background: rgba(0,0,0,0.04); color: #0f172a; }
+        .nav-btn-next { color: white; background: linear-gradient(135deg, #ea580c, #f59e0b); box-shadow: 0 2px 12px rgba(234,88,12,0.3); }
+        .nav-btn-next:not(:disabled):hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(234,88,12,0.4); }
+        .nav-btn-next:disabled { background: #cbd5e1; box-shadow: none; }
+
+        .section-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: 0.75rem; font-weight: 600; background: rgba(234,88,12,0.08); color: #ea580c; }
     </style>
 </head>
-<body class="text-slate-800 antialiased min-h-screen pb-12 font-sans">
+<body class="text-slate-800 antialiased min-h-screen font-sans">
 
-    <header class="bg-brand-navy text-white py-10 px-4 sm:px-6 shadow-lg mb-8">
-        <div class="max-w-4xl mx-auto">
-            <p class="text-brand-orange font-display tracking-widest uppercase text-xs sm:text-sm font-bold mb-2">Creative Minds' Forum | Creatives Connect</p>
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-4">The 4D AI Fluency Audit</h1>
-            <p class="text-base sm:text-lg text-slate-300 max-w-2xl mb-4 leading-relaxed">
-                Discover your vulnerability to the gig economy polarization. Answer the 20 questions below to calculate your strategic career positioning and find out if you are a Commodity Laborer or a Systems Architect.
+    <!-- Page Loader -->
+    <div id="page-loader" class="page-loader">
+        <img src="assets/cmf_logo.png" alt="CMF Logo" class="w-20 h-20 object-contain rounded-2xl bg-white p-2 shadow-2xl mb-3 animate-pulse">
+        <div class="loader-sub">Creative Minds' Forum · AI Fluency</div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- LANDING PAGE                                                      -->
+    <!-- ================================================================ -->
+    <div id="landingPage" class="landing-bg page-transition">
+
+        <!-- Nav -->
+        <nav class="max-w-6xl mx-auto px-4 sm:px-6 py-6 flex items-center justify-between relative z-10">
+            <div class="flex items-center gap-3">
+                <img src="assets/cmf_logo.png" alt="CMF Logo" class="w-11 h-11 object-contain rounded-xl bg-white p-1 shadow-sm border border-slate-200/80">
+                <div>
+                    <span class="font-display font-extrabold text-brand-navy text-base tracking-tight block">Creative Minds' Forum</span>
+                    <span class="text-[10px] text-slate-400 font-semibold tracking-wider uppercase block">AI Fluency Assessment</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="text-xs font-semibold text-slate-500 bg-slate-100/80 px-3 py-1.5 rounded-full border border-slate-200/60 hidden sm:inline-flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Creatives Connect Edition
+                </span>
+            </div>
+        </nav>
+
+        <!-- Decorative vertical lines (JCD guide rules) -->
+        <div class="deco-line hidden lg:block" style="height: 180px; left: 6%; top: 22%;"></div>
+        <div class="deco-line hidden lg:block" style="height: 140px; right: 6%; top: 18%;"></div>
+        <div class="deco-line hidden lg:block" style="height: 160px; left: 12%; bottom: 15%;"></div>
+        <div class="deco-line hidden lg:block" style="height: 120px; right: 14%; bottom: 20%;"></div>
+
+        <!-- Hero Section with Constellation Elements -->
+        <section class="relative z-10 text-center px-4 sm:px-6 pt-12 sm:pt-20 pb-16 sm:pb-24 max-w-6xl mx-auto">
+
+            <!-- Floating Constellation Cards (Direct inspiration from Image 1: quso.ai) -->
+            <!-- Top-Left Floating Card: Delegation -->
+            <div class="floating-hero-card float-anim-1 hidden xl:flex" style="top: 2%; left: 1%;">
+                <div class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-sm font-bold shadow-sm">01</div>
+                <div class="text-left">
+                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-orange-600 block">Delegation</span>
+                    <span class="text-xs font-bold text-slate-800">Architecting Labor</span>
+                </div>
+            </div>
+
+            <!-- Top-Right Floating Card: Description -->
+            <div class="floating-hero-card float-anim-2 hidden xl:flex" style="top: 2%; right: 1%;">
+                <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-sm font-bold shadow-sm">02</div>
+                <div class="text-left">
+                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-blue-600 block">Description</span>
+                    <span class="text-xs font-bold text-slate-800">Context Engineering</span>
+                </div>
+            </div>
+
+            <!-- Mid-Left Floating Card: Discernment -->
+            <div class="floating-hero-card float-anim-2 hidden xl:flex" style="top: 56%; left: 0%;">
+                <div class="w-8 h-8 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center text-sm font-bold shadow-sm">03</div>
+                <div class="text-left">
+                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-rose-600 block">Discernment</span>
+                    <span class="text-xs font-bold text-slate-800">The Human Defense</span>
+                </div>
+            </div>
+
+            <!-- Mid-Right Floating Card: Diligence -->
+            <div class="floating-hero-card float-anim-1 hidden xl:flex" style="top: 56%; right: 0%;">
+                <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center text-sm font-bold shadow-sm">04</div>
+                <div class="text-left">
+                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-600 block">Diligence</span>
+                    <span class="text-xs font-bold text-slate-800">Ethics &amp; IP Protection</span>
+                </div>
+            </div>
+
+            <!-- Pre-heading Pill (From Image 2: "We support ↗" agency badge) -->
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/95 border border-slate-200/90 shadow-sm mb-6 landing-reveal">
+                <img src="assets/cmf_logo.png" alt="CMF" class="w-5 h-5 object-contain">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-slate-800">Creative Minds' Forum</span>
+                <span class="w-4 h-4 rounded-full bg-indigo-600 text-white flex items-center justify-center text-[9px] font-bold leading-none">↗</span>
+            </div>
+
+            <!-- Main Title (Styled from Image 2: Bold modern geometric sans + expanded toggle) -->
+            <h1 class="hero-title text-brand-navy mb-6 landing-reveal">
+                <span class="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-2 sm:mb-3">
+                    CMF AI-FL<span class="expanded-capsule" title="4D Fluency Capsule"><span class="expanded-capsule-knob"></span></span>ENCY
+                </span>
+                <span class="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-slate-900">
+                    TEST
+                </span>
+            </h1>
+
+            <p class="text-base sm:text-xl text-slate-600 max-w-2xl mx-auto mb-8 leading-relaxed landing-reveal font-normal" style="transition-delay: 0.1s;">
+                Measure your cognitive collaboration readiness across the <strong class="text-slate-900 font-semibold">4D AI Fluency Framework</strong>. Find out whether you're operating as a replaceable <span class="text-rose-600 font-semibold">Commodity Laborer</span> or an indispensable <span class="text-brand-orange font-semibold">Systems Architect</span>.
             </p>
-            <p class="text-xs sm:text-sm text-slate-400 max-w-2xl border-t border-slate-700/60 pt-4 mt-2">
-                <em>*Based on the foundational AI Fluency 4D Framework developed by Rick Dakan, Joseph Feller, and Anthropic.</em>
-            </p>
-        </div>
-    </header>
 
-    <main class="max-w-4xl mx-auto px-4 sm:px-6">
-        <form id="auditForm" class="space-y-8 sm:space-y-12">
-            
-            <section class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-                <div class="bg-slate-50 border-b border-slate-200 p-5 sm:p-6">
-                    <h2 class="text-xl sm:text-2xl font-display font-bold text-brand-navy flex items-center gap-3">
-                        <span class="bg-brand-orange text-white w-8 h-8 rounded flex items-center justify-center text-lg shadow-sm">1</span>
-                        Delegation (Architecting Labor)
-                    </h2>
-                    <p class="text-sm sm:text-base text-slate-500 mt-2">How strategically do you divide labor between human intellect and machine computation?</p>
+            <!-- Social proof chip like Image 1 -->
+            <div class="flex items-center justify-center gap-2 mb-8 landing-reveal" style="transition-delay: 0.15s;">
+                <div class="flex -space-x-1.5 overflow-hidden">
+                    <span class="inline-block h-7 w-7 rounded-full ring-2 ring-white bg-slate-800 text-white text-[10px] font-bold flex items-center justify-center">RD</span>
+                    <span class="inline-block h-7 w-7 rounded-full ring-2 ring-white bg-orange-600 text-white text-[10px] font-bold flex items-center justify-center">JF</span>
+                    <span class="inline-block h-7 w-7 rounded-full ring-2 ring-white bg-indigo-600 text-white text-[10px] font-bold flex items-center justify-center">AN</span>
                 </div>
-                <div class="p-5 sm:p-6 space-y-8" id="delegation-questions">
-                    <!-- Questions injected via JS -->
-                </div>
-            </section>
+                <span class="text-xs font-semibold text-slate-500">Co-developed with Anthropic · 1,200+ Audited</span>
+            </div>
 
-            <section class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-                <div class="bg-slate-50 border-b border-slate-200 p-5 sm:p-6">
-                    <h2 class="text-xl sm:text-2xl font-display font-bold text-brand-navy flex items-center gap-3">
-                        <span class="bg-brand-orange text-white w-8 h-8 rounded flex items-center justify-center text-lg shadow-sm">2</span>
-                        Description (Context Engineering)
-                    </h2>
-                    <p class="text-sm sm:text-base text-slate-500 mt-2">How effectively do you define the product, process, and performance for the AI?</p>
-                </div>
-                <div class="p-5 sm:p-6 space-y-8" id="description-questions">
-                    <!-- Questions injected via JS -->
-                </div>
-            </section>
-
-            <section class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-                <div class="bg-slate-50 border-b border-slate-200 p-5 sm:p-6">
-                    <h2 class="text-xl sm:text-2xl font-display font-bold text-brand-navy flex items-center gap-3">
-                        <span class="bg-brand-orange text-white w-8 h-8 rounded flex items-center justify-center text-lg shadow-sm">3</span>
-                        Discernment (The Human Defense)
-                    </h2>
-                    <p class="text-sm sm:text-base text-slate-500 mt-2">How rigorously do you scrutinize outputs to prevent automation bias and cultural erasure?</p>
-                </div>
-                <div class="p-5 sm:p-6 space-y-8" id="discernment-questions">
-                    <!-- Questions injected via JS -->
-                </div>
-            </section>
-
-            <section class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-                <div class="bg-slate-50 border-b border-slate-200 p-5 sm:p-6">
-                    <h2 class="text-xl sm:text-2xl font-display font-bold text-brand-navy flex items-center gap-3">
-                        <span class="bg-brand-orange text-white w-8 h-8 rounded flex items-center justify-center text-lg shadow-sm">4</span>
-                        Diligence (Accountability)
-                    </h2>
-                    <p class="text-sm sm:text-base text-slate-500 mt-2">How ethically and legally responsible are you with deployed AI assets?</p>
-                </div>
-                <div class="p-5 sm:p-6 space-y-8" id="diligence-questions">
-                    <!-- Questions injected via JS -->
-                </div>
-            </section>
-
-            <div class="sticky bottom-4 sm:bottom-6 z-10 bg-white/90 backdrop-blur-md p-4 rounded-xl shadow-lg border border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4">
-                <p class="text-sm font-bold text-slate-600 w-full sm:w-auto text-center" id="progress-text">0 of 20 answered</p>
-                <button type="button" onclick="calculateScore()" id="submitBtn" disabled class="w-full sm:w-auto bg-brand-blue disabled:bg-slate-300 disabled:cursor-not-allowed hover:bg-indigo-700 text-white font-display font-bold text-base sm:text-lg py-3 px-8 rounded-lg transition-all shadow-md touch-manipulation">
-                    Calculate My Score
+            <div class="landing-reveal" style="transition-delay: 0.2s;">
+                <button class="cta-btn" onclick="startQuiz()">
+                    Start Answering
+                    <span class="cta-arrow">→</span>
                 </button>
             </div>
-        </form>
 
-        <div id="resultsDashboard" class="hidden mt-8 sm:mt-12 space-y-6 sm:space-y-8">
-            <div class="bg-brand-navy text-white rounded-2xl shadow-xl p-6 sm:p-8 border-t-8 border-brand-orange relative overflow-hidden">
-                <!-- Decorative BG -->
-                <div class="absolute -right-10 -top-10 w-64 h-64 bg-brand-blue rounded-full opacity-20 blur-3xl pointer-events-none"></div>
-                
-                <div class="grid md:grid-cols-2 gap-8 items-center relative z-10">
-                    <div>
-                        <p class="text-brand-orange font-display tracking-widest uppercase text-xs sm:text-sm font-bold mb-2">Your Career Diagnosis</p>
-                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-4 leading-tight" id="archetypeTitle">The Systems Architect</h2>
-                        <p class="text-base sm:text-lg text-slate-300 mb-6" id="archetypeDesc">Description goes here.</p>
-                        
-                        <div class="flex items-end gap-2">
-                            <span class="text-6xl sm:text-7xl font-black text-white leading-none" id="totalScore">85</span>
-                            <span class="text-xl sm:text-2xl text-slate-400 mb-1 sm:mb-2 font-medium">/ 100</span>
+            <div class="flex items-center justify-center gap-4 text-xs font-medium text-slate-400 mt-6 landing-reveal" style="transition-delay: 0.25s;">
+                <span class="inline-flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    20 Strategic Questions
+                </span>
+                <span>•</span>
+                <span class="inline-flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+                    ~4 Minutes
+                </span>
+                <span>•</span>
+                <span class="inline-flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    Instant Archetype Diagnosis
+                </span>
+            </div>
+        </section>
+
+        <!-- 4D Framework Cards (Relevance, Need, Application, Benefits) -->
+        <section class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pb-20 sm:pb-28">
+            <div class="text-center mb-12 sm:mb-16 landing-reveal" style="transition-delay: 0.3s;">
+                <span class="text-brand-orange font-extrabold uppercase tracking-widest text-xs px-3 py-1 rounded-full bg-orange-50 border border-orange-100 inline-block mb-3">
+                    Foundational Architecture
+                </span>
+                <h2 class="hero-title text-3xl sm:text-4xl md:text-5xl text-brand-navy mb-4">
+                    The 4D AI Fluency Framework
+                </h2>
+                <p class="text-base text-slate-500 max-w-2xl mx-auto leading-relaxed">
+                    Formulated by Professors Rick Dakan &amp; Joseph Feller in partnership with Anthropic. Grounded in cognitive science to guide professionals from passive prompt users to authoritative systems orchestrators.
+                </p>
+            </div>
+
+            <!-- The 4 Core Framework Cards Requested by User -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Card 1: Relevance of the 4D Framework -->
+                <div class="framework-card card-relevance landing-reveal" style="transition-delay: 0.35s;">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="card-icon bg-orange-50 text-orange-600 mb-0">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                        </div>
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-md bg-orange-100/70 text-orange-700">01 · Relevance</span>
+                    </div>
+                    <h3 class="font-extrabold text-brand-navy text-xl mb-2">Why It Matters</h3>
+                    <p class="text-xs font-bold text-orange-600 uppercase tracking-wide mb-3">Cognitive Partnership</p>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4 flex-grow">
+                        Moves beyond superficial "prompt engineering." It establishes how humans and AI share cognition, defining boundaries where machines execute scale while humans maintain strategic leadership.
+                    </p>
+                    <div class="pt-4 border-t border-slate-100 text-xs text-slate-500">
+                        <strong class="text-slate-800 block mb-1">Core Impact:</strong>
+                        Replaces brute-force trial and error with structured cognitive allocation.
+                    </div>
+                </div>
+
+                <!-- Card 2: Why It Is Needed -->
+                <div class="framework-card card-need landing-reveal" style="transition-delay: 0.4s;">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="card-icon bg-rose-50 text-rose-600 mb-0">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </div>
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-md bg-rose-100/70 text-rose-700">02 · Necessity</span>
+                    </div>
+                    <h3 class="font-extrabold text-brand-navy text-xl mb-2">The Urgency</h3>
+                    <p class="text-xs font-bold text-rose-600 uppercase tracking-wide mb-3">The Polarization Shift</p>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4 flex-grow">
+                        AI rapidly divides the talent pool into two: vulnerable workers doing mechanical tasks, and orchestrators. Without the 4D framework, professionals fall for the "Polished Output Problem" — mistaking fluency for accuracy.
+                    </p>
+                    <div class="pt-4 border-t border-slate-100 text-xs text-slate-500">
+                        <strong class="text-slate-800 block mb-1">Core Defense:</strong>
+                        Guards against automation displacement and insidious algorithmic bias.
+                    </div>
+                </div>
+
+                <!-- Card 3: Real-World Application -->
+                <div class="framework-card card-application landing-reveal" style="transition-delay: 0.45s;">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="card-icon bg-blue-50 text-blue-600 mb-0">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        </div>
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-md bg-blue-100/70 text-blue-700">03 · Application</span>
+                    </div>
+                    <h3 class="font-extrabold text-brand-navy text-xl mb-2">Daily Execution</h3>
+                    <p class="text-xs font-bold text-blue-600 uppercase tracking-wide mb-3">The 4 Operating Modes</p>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4 flex-grow">
+                        Applied across four operational vectors: <strong>Delegating</strong> cognitive chunks, <strong>Describing</strong> deep context &amp; constraints, <strong>Discerning</strong> hallucinations, and exercising <strong>Diligence</strong> in IP and ethics.
+                    </p>
+                    <div class="pt-4 border-t border-slate-100 text-xs text-slate-500">
+                        <strong class="text-slate-800 block mb-1">Practical Output:</strong>
+                        Reliable, repeatable, production-grade workflows for teams &amp; soloists.
+                    </div>
+                </div>
+
+                <!-- Card 4: Career Benefits -->
+                <div class="framework-card card-benefits landing-reveal" style="transition-delay: 0.5s;">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="card-icon bg-emerald-50 text-emerald-600 mb-0">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        </div>
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-md bg-emerald-100/70 text-emerald-700">04 · Career ROI</span>
+                    </div>
+                    <h3 class="font-extrabold text-brand-navy text-xl mb-2">The Career Moat</h3>
+                    <p class="text-xs font-bold text-emerald-600 uppercase tracking-wide mb-3">Systems Architect</p>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4 flex-grow">
+                        Transition from being compensated for raw keystrokes to being compensated for orchestration and judgment. Command higher fees, lead transformative initiatives, and build a future-proof career.
+                    </p>
+                    <div class="pt-4 border-t border-slate-100 text-xs text-slate-500">
+                        <strong class="text-slate-800 block mb-1">Career Benefit:</strong>
+                        Indispensable market positioning with 10x output and complete legal safety.
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom CTA -->
+            <div class="text-center mt-14 sm:mt-16 landing-reveal" style="transition-delay: 0.55s;">
+                <p class="text-sm font-semibold text-slate-500 mb-4">Discover your personalized 4D breakdown and archetype profile</p>
+                <button class="cta-btn" onclick="startQuiz()">
+                    Start Answering
+                    <span class="cta-arrow">→</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Landing Footer -->
+        <footer class="relative z-10 py-8 px-4 border-t border-slate-200/70 bg-white/40">
+            <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+                <div class="flex items-center gap-2">
+                    <img src="assets/cmf_logo.png" alt="CMF" class="w-6 h-6 object-contain rounded-md bg-white p-0.5 border border-slate-200">
+                    <span class="font-bold text-slate-800">4D AI Fluency Framework</span>
+                    <span>·</span>
+                    <span>Created by Rick Dakan &amp; Joseph Feller with Anthropic</span>
+                </div>
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Creative Minds' Forum. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- QUIZ PAGE (hidden initially, shown on "Start Answering")          -->
+    <!-- ================================================================ -->
+    <div id="quizPage" class="hidden page-transition page-fade-in">
+
+        <!-- Quiz Header -->
+        <header class="animated-header text-white py-10 sm:py-12 px-4 sm:px-6 shadow-2xl mb-8 relative overflow-hidden">
+            <div id="header-particles" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
+            <div class="max-w-4xl mx-auto relative z-10 flex items-center gap-4 sm:gap-5">
+                <img src="assets/cmf_logo.png" alt="CMF Logo" class="w-14 h-14 sm:w-16 sm:h-16 object-contain rounded-2xl bg-white p-1.5 shadow-lg flex-shrink-0">
+                <div>
+                    <p class="text-brand-orange font-display tracking-widest uppercase text-xs sm:text-sm font-bold mb-1">Creative Minds' Forum | Creatives Connect</p>
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-2">The 4D AI Fluency Audit</h1>
+                    <p class="text-sm sm:text-base text-slate-300 max-w-2xl leading-relaxed">
+                        Answer the 20 questions below to calculate your strategic career positioning.
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <main class="max-w-4xl mx-auto px-4 sm:px-6 pb-12">
+            <form id="auditForm">
+                <!-- Stepper -->
+                <div class="stepper-container glass-card rounded-2xl p-4 sm:p-5">
+                    <div class="stepper-track" id="stepper-track">
+                        <div class="step active" data-index="0" onclick="handleStepClick(0)">
+                            <div class="step-dot" id="step-dot-0">1</div>
+                            <span class="step-label hidden sm:block">Delegation</span>
+                        </div>
+                        <div class="step-connector"><div class="step-connector-fill" id="connector-0"></div></div>
+                        <div class="step future" data-index="1" onclick="handleStepClick(1)">
+                            <div class="step-dot" id="step-dot-1">2</div>
+                            <span class="step-label hidden sm:block">Description</span>
+                        </div>
+                        <div class="step-connector"><div class="step-connector-fill" id="connector-1"></div></div>
+                        <div class="step future" data-index="2" onclick="handleStepClick(2)">
+                            <div class="step-dot" id="step-dot-2">3</div>
+                            <span class="step-label hidden sm:block">Discernment</span>
+                        </div>
+                        <div class="step-connector"><div class="step-connector-fill" id="connector-2"></div></div>
+                        <div class="step future" data-index="3" onclick="handleStepClick(3)">
+                            <div class="step-dot" id="step-dot-3">4</div>
+                            <span class="step-label hidden sm:block">Diligence</span>
                         </div>
                     </div>
-                    
-                    <div class="bg-white/5 rounded-2xl p-4 flex justify-center items-center backdrop-blur-sm border border-white/10">
-                        <div class="relative w-full max-w-[300px] aspect-square">
-                            <canvas id="radarChart"></canvas>
+                </div>
+
+                <!-- Slides -->
+                <div class="slides-viewport mt-6">
+                    <div class="slides-container" id="slides-container">
+                        <div class="slide" id="slide-0">
+                            <section class="glass-card rounded-2xl overflow-hidden dimension-delegation" id="section-0">
+                                <div class="bg-white/50 border-b border-slate-200/60 p-5 sm:p-6">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h2 class="text-xl sm:text-2xl font-display font-bold text-brand-navy flex items-center gap-3">
+                                            <span class="badge-delegation text-white w-9 h-9 rounded-lg flex items-center justify-center text-lg shadow-md">1</span>
+                                            Delegation
+                                        </h2>
+                                        <span class="section-badge" id="section-badge-0">0 / 5</span>
+                                    </div>
+                                    <p class="text-sm text-slate-600 font-semibold mt-1">Architecting Labor</p>
+                                    <p class="text-sm sm:text-base text-slate-500 mt-1">How strategically do you divide labor between human intellect and machine computation?</p>
+                                </div>
+                                <div class="p-5 sm:p-6 space-y-8" id="delegation-questions"></div>
+                            </section>
+                        </div>
+                        <div class="slide" id="slide-1">
+                            <section class="glass-card rounded-2xl overflow-hidden dimension-description" id="section-1">
+                                <div class="bg-white/50 border-b border-slate-200/60 p-5 sm:p-6">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h2 class="text-xl sm:text-2xl font-display font-bold text-brand-navy flex items-center gap-3">
+                                            <span class="badge-description text-white w-9 h-9 rounded-lg flex items-center justify-center text-lg shadow-md">2</span>
+                                            Description
+                                        </h2>
+                                        <span class="section-badge" id="section-badge-1">0 / 5</span>
+                                    </div>
+                                    <p class="text-sm text-slate-600 font-semibold mt-1">Context Engineering</p>
+                                    <p class="text-sm sm:text-base text-slate-500 mt-1">How effectively do you define the product, process, and performance for the AI?</p>
+                                </div>
+                                <div class="p-5 sm:p-6 space-y-8" id="description-questions"></div>
+                            </section>
+                        </div>
+                        <div class="slide" id="slide-2">
+                            <section class="glass-card rounded-2xl overflow-hidden dimension-discernment" id="section-2">
+                                <div class="bg-white/50 border-b border-slate-200/60 p-5 sm:p-6">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h2 class="text-xl sm:text-2xl font-display font-bold text-brand-navy flex items-center gap-3">
+                                            <span class="badge-discernment text-white w-9 h-9 rounded-lg flex items-center justify-center text-lg shadow-md">3</span>
+                                            Discernment
+                                        </h2>
+                                        <span class="section-badge" id="section-badge-2">0 / 5</span>
+                                    </div>
+                                    <p class="text-sm text-slate-600 font-semibold mt-1">The Human Defense</p>
+                                    <p class="text-sm sm:text-base text-slate-500 mt-1">How rigorously do you scrutinize outputs to prevent automation bias and cultural erasure?</p>
+                                </div>
+                                <div class="p-5 sm:p-6 space-y-8" id="discernment-questions"></div>
+                            </section>
+                        </div>
+                        <div class="slide" id="slide-3">
+                            <section class="glass-card rounded-2xl overflow-hidden dimension-diligence" id="section-3">
+                                <div class="bg-white/50 border-b border-slate-200/60 p-5 sm:p-6">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h2 class="text-xl sm:text-2xl font-display font-bold text-brand-navy flex items-center gap-3">
+                                            <span class="badge-diligence text-white w-9 h-9 rounded-lg flex items-center justify-center text-lg shadow-md">4</span>
+                                            Diligence
+                                        </h2>
+                                        <span class="section-badge" id="section-badge-3">0 / 5</span>
+                                    </div>
+                                    <p class="text-sm text-slate-600 font-semibold mt-1">Accountability</p>
+                                    <p class="text-sm sm:text-base text-slate-500 mt-1">How ethically and legally responsible are you with deployed AI assets?</p>
+                                </div>
+                                <div class="p-5 sm:p-6 space-y-8" id="diligence-questions"></div>
+                            </section>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="grid sm:grid-cols-2 gap-4 sm:gap-6">
-                <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-200">
-                    <h3 class="text-lg sm:text-xl font-display font-bold text-brand-navy mb-3 border-b border-slate-100 pb-2">Your Greatest Strength</h3>
-                    <p id="strengthText" class="text-sm sm:text-base text-slate-600 leading-relaxed">Calculating...</p>
+                <!-- Sticky Bar -->
+                <div class="sticky bottom-4 sm:bottom-6 z-10 sticky-bar p-4 rounded-xl shadow-lg mt-6">
+                    <div class="progress-bar-track mb-3"><div class="progress-bar-fill" id="progress-bar-fill"></div></div>
+                    <div class="flex justify-between items-center gap-3">
+                        <button type="button" id="prevBtn" onclick="prevSlide()" class="nav-btn nav-btn-back" style="visibility: hidden;">← Back</button>
+                        <p class="text-sm font-bold text-slate-600 text-center flex-1" id="progress-text">Section 1 of 4 · 0 of 20 answered</p>
+                        <button type="button" id="nextBtn" onclick="nextSlide()" disabled class="nav-btn nav-btn-next">Next →</button>
+                        <button type="button" id="submitBtn" onclick="calculateScore()" disabled class="nav-btn nav-btn-next hidden">Calculate My Score</button>
+                    </div>
                 </div>
-                <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-200">
-                    <h3 class="text-lg sm:text-xl font-display font-bold text-brand-orange mb-3 border-b border-slate-100 pb-2">Your Critical Vulnerability</h3>
-                    <p id="weaknessText" class="text-sm sm:text-base text-slate-600 leading-relaxed">Calculating...</p>
+            </form>
+
+            <!-- Results Dashboard -->
+            <div id="resultsDashboard" class="hidden mt-8 sm:mt-12 space-y-6 sm:space-y-8">
+                <div class="bg-brand-navy text-white rounded-2xl shadow-xl p-6 sm:p-8 border-t-8 border-brand-orange relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 w-64 h-64 bg-brand-blue rounded-full opacity-20 blur-3xl pointer-events-none"></div>
+                    <div class="absolute -left-20 -bottom-20 w-48 h-48 bg-brand-orange rounded-full opacity-10 blur-3xl pointer-events-none"></div>
+                    <div class="grid md:grid-cols-2 gap-8 items-center relative z-10">
+                        <div>
+                            <p class="text-brand-orange font-display tracking-widest uppercase text-xs sm:text-sm font-bold mb-2">Your Career Diagnosis</p>
+                            <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-4 leading-tight" id="archetypeTitle">The Systems Architect</h2>
+                            <p class="text-base sm:text-lg text-slate-300 mb-6" id="archetypeDesc">Description goes here.</p>
+                            <div class="flex items-end gap-2 score-reveal">
+                                <span class="text-6xl sm:text-7xl font-black text-white leading-none" id="totalScore">0</span>
+                                <span class="text-xl sm:text-2xl text-slate-400 mb-1 sm:mb-2 font-medium">/ 100</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 rounded-2xl p-4 flex justify-center items-center backdrop-blur-sm border border-white/10">
+                            <div class="relative w-full max-w-[300px] aspect-square"><canvas id="radarChart"></canvas></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-4 sm:gap-6">
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-200 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                        <h3 class="text-lg sm:text-xl font-display font-bold text-brand-navy mb-3 border-b border-slate-100 pb-2 flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> Your Greatest Strength
+                        </h3>
+                        <p id="strengthText" class="text-sm sm:text-base text-slate-600 leading-relaxed">Calculating...</p>
+                    </div>
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-200 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                        <h3 class="text-lg sm:text-xl font-display font-bold text-brand-orange mb-3 border-b border-slate-100 pb-2 flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-orange-500 inline-block"></span> Your Critical Vulnerability
+                        </h3>
+                        <p id="weaknessText" class="text-sm sm:text-base text-slate-600 leading-relaxed">Calculating...</p>
+                    </div>
+                </div>
+                <div class="text-center pt-4">
+                    <button onclick="resetAudit()" class="text-brand-navy font-bold hover:text-brand-orange transition-colors text-lg group">
+                        <span class="inline-block transition-transform group-hover:-translate-x-1">←</span> Retake Audit
+                    </button>
                 </div>
             </div>
-            
-            <div class="text-center pt-4">
-                <button onclick="resetAudit()" class="text-brand-navy font-bold hover:text-brand-orange transition-colors text-lg">← Retake Audit</button>
+        </main>
+
+        <footer class="mt-12 py-8 px-4 border-t border-slate-200/60">
+            <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-slate-400">
+                <div class="flex items-center gap-2">
+                    <span class="font-display font-bold text-brand-navy">Creative Minds' Forum</span>
+                    <span class="text-slate-300">|</span>
+                    <span>Creatives Connect</span>
+                </div>
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Creative Minds' Forum. All rights reserved.</p>
             </div>
-        </div>
-    </main>
+        </footer>
+    </div>
 
     <script>
+        // ================================================================
+        // ORIGINAL FUNCTIONAL CODE — ALL PRESERVED
+        // ================================================================
         const questions = {
             delegation: [
                 "I clearly define my project's strategic goal, target audience, and cultural context BEFORE opening an AI tool.",
@@ -205,172 +886,207 @@
         ];
 
         let radarChartInstance = null;
+        let currentSlide = 0;
+        let autoAdvanceTimeout = null;
+        const sectionKeys = ['delegation', 'description', 'discernment', 'diligence'];
+        const dimensionColors = ['#ea580c', '#3b82f6', '#10b981', '#8b5cf6'];
 
+        // ================================================================
+        // LANDING → QUIZ TRANSITION
+        // ================================================================
+        function startQuiz() {
+            const landing = document.getElementById('landingPage');
+            const quiz = document.getElementById('quizPage');
+
+            landing.classList.add('page-fade-out');
+
+            setTimeout(() => {
+                landing.classList.add('hidden');
+                quiz.classList.remove('hidden');
+                window.scrollTo({ top: 0 });
+
+                requestAnimationFrame(() => {
+                    quiz.classList.add('visible');
+                });
+            }, 500);
+        }
+
+        // ================================================================
+        // RENDERING
+        // ================================================================
         function renderQuestions() {
             Object.keys(questions).forEach(category => {
                 const container = document.getElementById(`${category}-questions`);
                 questions[category].forEach((q, index) => {
                     const qNum = index + 1;
                     const name = `${category}_q${qNum}`;
-                    
-                    // Flex-col on mobile allows for large, tappable buttons. Sm:flex-row snaps them horizontal on larger screens.
                     let html = `
                         <div class="question-block mb-8 last:mb-0">
                             <p class="font-bold text-base sm:text-lg mb-3 sm:mb-4 text-brand-navy leading-snug">${qNum}. ${q}</p>
                             <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
                     `;
-                    
                     scales.forEach(s => {
                         html += `
                             <div class="flex-1">
                                 <input type="radio" name="${name}" id="${name}_${s.val}" value="${s.val}" class="peer hidden radio-custom" onchange="updateProgress()">
-                                <label for="${name}_${s.val}" class="block text-center py-3 px-2 sm:py-2 border border-slate-300 rounded-lg cursor-pointer transition-all duration-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 hover:border-slate-400 peer-checked:bg-brand-orange peer-checked:text-white peer-checked:border-brand-orange peer-checked:shadow-md h-full flex items-center justify-center select-none touch-manipulation">
+                                <label for="${name}_${s.val}" class="block text-center py-3 px-2 sm:py-2.5 border-2 border-slate-200 rounded-full cursor-pointer transition-all duration-300 text-sm font-semibold text-slate-500 hover:bg-white hover:border-orange-300 hover:shadow-md hover:shadow-orange-100/50 hover:scale-105 peer-checked:bg-gradient-to-r peer-checked:from-orange-500 peer-checked:to-amber-500 peer-checked:text-white peer-checked:border-transparent peer-checked:shadow-lg peer-checked:shadow-orange-200/50 peer-checked:scale-105 h-full flex items-center justify-center select-none touch-manipulation">
                                     ${s.label}
                                 </label>
                             </div>
                         `;
                     });
-                    
                     html += `</div></div>`;
                     container.innerHTML += html;
                 });
             });
         }
 
-        function updateProgress() {
-            const totalQuestions = 20;
-            const answered = document.querySelectorAll('input[type="radio"]:checked').length;
-            document.getElementById('progress-text').innerText = `${answered} of ${totalQuestions} answered`;
-            
-            const submitBtn = document.getElementById('submitBtn');
-            if (answered === totalQuestions) {
-                submitBtn.disabled = false;
-                submitBtn.classList.add('animate-pulse');
-                setTimeout(() => submitBtn.classList.remove('animate-pulse'), 1000);
-            } else {
-                submitBtn.disabled = true;
+        // ================================================================
+        // SLIDER NAVIGATION
+        // ================================================================
+        function goToSlide(index) {
+            if (index < 0 || index > 3 || index === currentSlide) return;
+            clearTimeout(autoAdvanceTimeout);
+            currentSlide = index;
+            document.getElementById('slides-container').style.transform = `translateX(-${index * 100}%)`;
+            document.querySelector('.stepper-container').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            updateStepper(); updateNavigationButtons(); updateSlideProgress();
+        }
+        function nextSlide() { clearTimeout(autoAdvanceTimeout); if (currentSlide < 3) goToSlide(currentSlide + 1); }
+        function prevSlide() { clearTimeout(autoAdvanceTimeout); if (currentSlide > 0) goToSlide(currentSlide - 1); }
+        function handleStepClick(index) {
+            if (index <= currentSlide) goToSlide(index);
+            if (index === currentSlide + 1 && getSectionAnswered(currentSlide) === 5) goToSlide(index);
+        }
+
+        // ================================================================
+        // STEPPER & PROGRESS
+        // ================================================================
+        function getSectionAnswered(i) { return document.querySelectorAll(`#${sectionKeys[i]}-questions input[type="radio"]:checked`).length; }
+
+        function updateStepper() {
+            document.querySelectorAll('.step').forEach((step, i) => {
+                const dot = document.getElementById(`step-dot-${i}`);
+                step.classList.remove('active', 'completed', 'future');
+                if (i < currentSlide) { step.classList.add('completed'); dot.style.background = dimensionColors[i]; dot.innerHTML = '✓'; step.style.cursor = 'pointer'; step.style.opacity = '1'; }
+                else if (i === currentSlide) { step.classList.add('active'); dot.style.background = dimensionColors[i]; dot.innerHTML = (i+1).toString(); step.style.cursor = 'pointer'; step.style.opacity = '1'; }
+                else { step.classList.add('future'); dot.style.background = '#cbd5e1'; dot.innerHTML = (i+1).toString(); }
+            });
+            for (let i = 0; i < 3; i++) {
+                const c = document.getElementById(`connector-${i}`);
+                if (i < currentSlide) { c.style.width = '100%'; c.style.background = dimensionColors[i]; }
+                else if (i === currentSlide) { c.style.width = `${(getSectionAnswered(i)/5)*100}%`; c.style.background = dimensionColors[i]; }
+                else { c.style.width = '0%'; }
             }
         }
 
+        function updateSlideProgress() {
+            for (let i = 0; i < 4; i++) {
+                const a = getSectionAnswered(i), b = document.getElementById(`section-badge-${i}`);
+                b.textContent = `${a} / 5`;
+                if (a === 5) { b.style.background = 'rgba(16,185,129,0.1)'; b.style.color = '#10b981'; }
+                else { b.style.background = 'rgba(234,88,12,0.08)'; b.style.color = '#ea580c'; }
+            }
+        }
+
+        function updateNavigationButtons() {
+            const prevBtn = document.getElementById('prevBtn'), nextBtn = document.getElementById('nextBtn'), submitBtn = document.getElementById('submitBtn');
+            prevBtn.style.visibility = currentSlide === 0 ? 'hidden' : 'visible';
+            if (currentSlide === 3) { nextBtn.classList.add('hidden'); submitBtn.classList.remove('hidden'); submitBtn.disabled = document.querySelectorAll('input[type="radio"]:checked').length < 20; }
+            else { nextBtn.classList.remove('hidden'); submitBtn.classList.add('hidden'); nextBtn.disabled = getSectionAnswered(currentSlide) < 5; }
+        }
+
+        function updateProgress() {
+            const total = 20, answered = document.querySelectorAll('input[type="radio"]:checked').length;
+            document.getElementById('progress-text').innerText = `Section ${currentSlide+1} of 4 · ${answered} of ${total} answered`;
+            const pf = document.getElementById('progress-bar-fill');
+            pf.style.width = `${(answered/total)*100}%`;
+            answered === total ? pf.classList.add('complete') : pf.classList.remove('complete');
+            updateStepper(); updateSlideProgress(); updateNavigationButtons();
+            clearTimeout(autoAdvanceTimeout);
+            if (getSectionAnswered(currentSlide) === 5 && currentSlide < 3) {
+                const sc = document.getElementById(`section-${currentSlide}`);
+                sc.classList.add('section-complete'); setTimeout(() => sc.classList.remove('section-complete'), 600);
+                autoAdvanceTimeout = setTimeout(() => goToSlide(currentSlide + 1), 1000);
+            }
+            if (currentSlide === 3 && answered === total) {
+                const sb = document.getElementById('submitBtn'); sb.disabled = false;
+                sb.classList.add('animate-pulse'); setTimeout(() => sb.classList.remove('animate-pulse'), 1000);
+            }
+        }
+
+        // ================================================================
+        // SCORING — ALL ORIGINAL LOGIC PRESERVED
+        // ================================================================
         function calculateScore() {
             document.getElementById('auditForm').classList.add('hidden');
             document.getElementById('resultsDashboard').classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            const scores = { delegation: 0, description: 0, discernment: 0, diligence: 0 };
-            let totalSum = 0;
-
-            Object.keys(questions).forEach(category => {
-                for (let i = 1; i <= 5; i++) {
-                    const val = parseInt(document.querySelector(`input[name="${category}_q${i}"]:checked`).value);
-                    scores[category] += val; // Max 25 per category
-                }
-                totalSum += scores[category]; // Max 100 total
-            });
-
-            // Update UI Total
-            document.getElementById('totalScore').innerText = totalSum;
-
-            let title = "";
-            let desc = "";
-
-            if (totalSum <= 40) {
-                title = "The Commodity Laborer";
-                desc = "High Risk. You are using AI passively or not at all. Competing strictly on basic execution and speed makes your career highly vulnerable to automation displacement by agentic workflows.";
-            } else if (totalSum <= 65) {
-                title = "The Prompt Jockey";
-                desc = "Moderate Risk. You use AI for speed and basic ideation, but you lack strategic depth and cultural defense. You are vulnerable to the 'Polished Output Problem', often accepting drafts without rigorous discernment.";
-            } else if (totalSum <= 85) {
-                title = "The AI-Augmented Creative";
-                desc = "Low Risk. You have established a strong cognitive partnership with AI. You iterate well, engineer solid context, and maintain a robust baseline of human defense and ethical diligence.";
-            } else {
-                title = "The Systems Architect";
-                desc = "Future-Proofed. You are a master orchestrator. You dictate process, rigorously defend cultural authenticity, and take absolute legal ownership of your IP. You are indispensable to the global market.";
-            }
-
-            document.getElementById('archetypeTitle').innerText = title;
-            document.getElementById('archetypeDesc').innerText = desc;
-
-            const categories = Object.keys(scores);
-            categories.sort((a, b) => scores[b] - scores[a]); // Sort descending
-            
-            const highest = categories[0];
-            const lowest = categories[3];
-
-            const feedback = {
-                delegation: "You possess a strong strategic mind, knowing exactly when to utilize machine computation versus human intuition.",
-                description: "You excel at Context Engineering, successfully shaping AI behavior, process, and product parameters to bypass generic outputs.",
-                discernment: "You have a powerful critical eye, successfully defending against algorithmic hallucinations, bias, and the 'polished output problem'.",
-                diligence: "You operate with world-class ethical and legal accountability, ensuring your IP is defensible and your data practices are secure."
-            };
-
-            const warnings = {
-                delegation: "You need to better define your strategic goals and separate your tasks. Stop treating AI like a search engine and start treating it like a specialized employee.",
-                description: "You must stop writing basic 'prompts' and start engineering 'context'. Define the format, persona, and process limitations clearly to get usable outputs.",
-                discernment: "You are highly susceptible to automation bias. You must aggressively scrutinize AI outputs for factual errors, logical leaps, and cultural erasure before using them.",
-                diligence: "Your lack of accountability exposes you to severe legal and reputational risks. You must prioritize data privacy, transparent disclosure, and human IP injection."
-            };
-
-            document.getElementById('strengthText').innerText = feedback[highest];
-            document.getElementById('weaknessText').innerText = warnings[lowest];
-
-            drawChart([scores.delegation, scores.description, scores.discernment, scores.diligence]);
+            const scores = { delegation: 0, description: 0, discernment: 0, diligence: 0 }; let totalSum = 0;
+            Object.keys(questions).forEach(cat => { for (let i = 1; i <= 5; i++) { const v = parseInt(document.querySelector(`input[name="${cat}_q${i}"]:checked`).value); scores[cat] += v; } totalSum += scores[cat]; });
+            animateScore(totalSum);
+            let title = "", desc = "";
+            if (totalSum <= 40) { title = "The Commodity Laborer"; desc = "High Risk. You are using AI passively or not at all. Competing strictly on basic execution and speed makes your career highly vulnerable to automation displacement by agentic workflows."; }
+            else if (totalSum <= 65) { title = "The Prompt Jockey"; desc = "Moderate Risk. You use AI for speed and basic ideation, but you lack strategic depth and cultural defense. You are vulnerable to the 'Polished Output Problem', often accepting drafts without rigorous discernment."; }
+            else if (totalSum <= 85) { title = "The AI-Augmented Creative"; desc = "Low Risk. You have established a strong cognitive partnership with AI. You iterate well, engineer solid context, and maintain a robust baseline of human defense and ethical diligence."; }
+            else { title = "The Systems Architect"; desc = "Future-Proofed. You are a master orchestrator. You dictate process, rigorously defend cultural authenticity, and take absolute legal ownership of your IP. You are indispensable to the global market."; }
+            document.getElementById('archetypeTitle').innerText = title; document.getElementById('archetypeDesc').innerText = desc;
+            const cats = Object.keys(scores); cats.sort((a, b) => scores[b] - scores[a]);
+            const feedback = { delegation: "You possess a strong strategic mind, knowing exactly when to utilize machine computation versus human intuition.", description: "You excel at Context Engineering, successfully shaping AI behavior, process, and product parameters to bypass generic outputs.", discernment: "You have a powerful critical eye, successfully defending against algorithmic hallucinations, bias, and the 'polished output problem'.", diligence: "You operate with world-class ethical and legal accountability, ensuring your IP is defensible and your data practices are secure." };
+            const warnings = { delegation: "You need to better define your strategic goals and separate your tasks. Stop treating AI like a search engine and start treating it like a specialized employee.", description: "You must stop writing basic 'prompts' and start engineering 'context'. Define the format, persona, and process limitations clearly to get usable outputs.", discernment: "You are highly susceptible to automation bias. You must aggressively scrutinize AI outputs for factual errors, logical leaps, and cultural erasure before using them.", diligence: "Your lack of accountability exposes you to severe legal and reputational risks. You must prioritize data privacy, transparent disclosure, and human IP injection." };
+            document.getElementById('strengthText').innerText = feedback[cats[0]]; document.getElementById('weaknessText').innerText = warnings[cats[3]];
+            drawChart([scores.delegation, scores.description, scores.discernment, scores.diligence]); createConfetti();
         }
 
-        function drawChart(dataArray) {
+        function drawChart(d) {
             const ctx = document.getElementById('radarChart').getContext('2d');
-            
-            if(radarChartInstance) {
-                radarChartInstance.destroy();
-            }
-
-            radarChartInstance = new Chart(ctx, {
-                type: 'radar',
-                data: {
-                    labels: ['Delegation', 'Description', 'Discernment', 'Diligence'],
-                    datasets: [{
-                        label: 'Your Fluency',
-                        data: dataArray,
-                        backgroundColor: 'rgba(234, 88, 12, 0.4)', // brand orange transparent
-                        borderColor: '#ea580c',
-                        pointBackgroundColor: '#ea580c',
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: '#ea580c',
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        r: {
-                            angleLines: { color: 'rgba(255, 255, 255, 0.2)' },
-                            grid: { color: 'rgba(255, 255, 255, 0.2)' },
-                            pointLabels: { 
-                                color: 'rgba(255, 255, 255, 0.9)', 
-                                font: { size: 12, family: "'Plus Jakarta Sans', sans-serif", weight: 'bold' } 
-                            },
-                            ticks: { display: false, min: 0, max: 25 }
-                        }
-                    },
-                    plugins: {
-                        legend: { display: false }
-                    }
-                }
-            });
+            if (radarChartInstance) radarChartInstance.destroy();
+            radarChartInstance = new Chart(ctx, { type: 'radar', data: { labels: ['Delegation', 'Description', 'Discernment', 'Diligence'], datasets: [{ label: 'Your Fluency', data: d, backgroundColor: 'rgba(234,88,12,0.4)', borderColor: '#ea580c', pointBackgroundColor: '#ea580c', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: '#ea580c', borderWidth: 2 }] }, options: { responsive: true, maintainAspectRatio: false, scales: { r: { angleLines: { color: 'rgba(255,255,255,0.2)' }, grid: { color: 'rgba(255,255,255,0.2)' }, pointLabels: { color: 'rgba(255,255,255,0.9)', font: { size: 12, family: "'Plus Jakarta Sans', sans-serif", weight: 'bold' } }, ticks: { display: false, min: 0, max: 25 } } }, plugins: { legend: { display: false } } } });
         }
 
         function resetAudit() {
             document.getElementById('auditForm').reset();
             document.getElementById('auditForm').classList.remove('hidden');
             document.getElementById('resultsDashboard').classList.add('hidden');
-            updateProgress();
+            currentSlide = 0; clearTimeout(autoAdvanceTimeout);
+            document.getElementById('slides-container').style.transform = 'translateX(0)';
+            updateStepper(); updateNavigationButtons(); updateSlideProgress(); updateProgress();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Initialize
+        // ================================================================
+        // VISUAL ENHANCEMENTS
+        // ================================================================
+        function createHeaderParticles() {
+            const c = document.getElementById('header-particles');
+            const cols = ['rgba(234,88,12,0.3)', 'rgba(55,48,163,0.2)', 'rgba(255,255,255,0.1)'];
+            for (let i = 0; i < 20; i++) { const p = document.createElement('div'); const s = Math.random()*6+2; p.className = 'header-particle'; p.style.cssText = `width:${s}px;height:${s}px;background:${cols[Math.floor(Math.random()*cols.length)]};left:${Math.random()*100}%;top:${Math.random()*100}%;animation:float ${Math.random()*4+4}s ease-in-out infinite;animation-delay:${Math.random()*3}s;`; c.appendChild(p); }
+        }
+        function animateScore(t) { const e = document.getElementById('totalScore'); let c = 0; const inc = t / (1500/16); const tm = setInterval(() => { c += inc; if (c >= t) { c = t; clearInterval(tm); } e.innerText = Math.round(c); }, 16); }
+        function createConfetti() { const cols = ['#ea580c','#f59e0b','#3730a3','#10b981','#8b5cf6','#ffffff']; for (let i = 0; i < 60; i++) { const p = document.createElement('div'); const s = Math.random()*8+4; p.style.cssText = `position:fixed;width:${s}px;height:${s}px;background:${cols[Math.floor(Math.random()*cols.length)]};left:${Math.random()*100}vw;top:-10px;border-radius:${Math.random()>0.5?'50%':'2px'};animation:confettiFall ${Math.random()*2+2}s ease-out forwards;animation-delay:${Math.random()*0.5}s;z-index:1000;pointer-events:none;opacity:0.9;`; document.body.appendChild(p); setTimeout(() => p.remove(), 4000); } }
+
+        // Landing page scroll reveals
+        function initLandingReveals() {
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+            document.querySelectorAll('.landing-reveal').forEach(el => obs.observe(el));
+        }
+
+        // ================================================================
+        // INIT
+        // ================================================================
         renderQuestions();
+        createHeaderParticles();
+        updateStepper(); updateNavigationButtons(); updateSlideProgress();
+        initLandingReveals();
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('page-loader').classList.add('fade-out');
+                setTimeout(() => { const l = document.getElementById('page-loader'); if (l) l.remove(); }, 600);
+            }, 600);
+        });
     </script>
 </body>
 </html>
